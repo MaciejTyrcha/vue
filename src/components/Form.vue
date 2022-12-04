@@ -7,30 +7,39 @@ const props = defineProps({
   Submit: Function,
 });
 
-let data = $ref({});
+//Object, which helds default values of data
+const formDefaults = $ref(props.content.reduce((o, key) => Object.assign(o, {[key.name]: key.default}), {}));
+//Object of data values
+const formData = $ref(props.content.reduce((o, key) => Object.assign(o, {[key.name]: key.value}), {}));
+
 const OnSubmit = () => {
-  props.Submit && props.Submit(data);
-  data = {};
+  props.Submit && props.Submit(formData);
+  resetData();
 }
 
-const updateFormData = inputData => {
-  const {prefix, value} = inputData;
-  data[prefix] = value;
+const resetData = () => {
+  for (const [key, value] of Object.entries(formDefaults)) {
+    formData[key] = "";
+  }
+}
+
+
+const updateData = (data) => {
+  const {name, value} = data;
+  formData[name] = value;
 }
 
 </script>
-
-
 <template>
   <form @submit.prevent="">
     <Input
-      v-for="item in props.content"
-      :placeholder="item.placeholder"
-      :labelText="item.label"
-      :type="item.type"
-      :value="val"
-      :prefix="item.prefix"
-      :Change="updateFormData"
+        v-for="item in content"
+        :value="formData[item.name]"
+        :placeholder="item.placeholder"
+        :label="item.label"
+        :type="item.type"
+        :name="item.name"
+        @updateData="updateData"
     />
     <div class="submitBtn" @click="OnSubmit">
       Submit

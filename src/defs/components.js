@@ -12,13 +12,15 @@ export const formDef1 = {
       type: "text",
       label: 'Name',
       placeholder: "Name",
-      prefix: 'name',
+      name: 'name',
+      default: "",
     },
     {
       type: "text",
       label: 'Surname',
       placeholder: "Surname",
-      prefix: 'surname',
+      name: 'surname',
+      default: "",
     },
   ]
 }
@@ -32,13 +34,17 @@ export const formDef2 = {
       type: "text",
       label: 'Name',
       placeholder: "Name",
-      prefix: 'name',
+      name: 'name',
+      value: "maciej",
+      default: "",
     },
     {
       type: "text",
       label: 'Surname',
       placeholder: "Surname",
-      prefix: 'surname',
+      name: 'surname',
+      value: "tyrcha",
+      default: "",
     },
   ]
 }

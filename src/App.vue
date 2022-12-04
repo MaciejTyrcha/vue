@@ -5,16 +5,16 @@
 
   import { useUserStore } from "@/stores/user.js";
   const userStore = useUserStore();
+
   const secondSubmit = (data) => {
     userStore.addUser(data);
-    formDef2.Submit(data);
   }
 
-
-
-
-
   let popupOpened = $ref(false);
+
+
+
+
   //Html references
   //This wont work because popup is still out of the page, since popupOpened = false
   // const POPUP = $ref(null)
@@ -43,11 +43,11 @@
 <template>
   <div id="wrapper">
     <div class="formExample">
-      <h1>First form -> This not work</h1>
-      <Form
-        :content = "formDef1.content"
-        :Submit = "formDef1.Submit"
-      />
+<!--      <h1>First form -> This not work</h1>-->
+<!--      <Form-->
+<!--        :content = "formDef1.content"-->
+<!--        :Submit = "formDef1.Submit"-->
+<!--      />-->
       <h1>Second form -> This works</h1>
       <Form
         :content = "formDef2.content"

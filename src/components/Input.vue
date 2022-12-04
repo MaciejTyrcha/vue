@@ -1,34 +1,31 @@
 <script setup>
-import {$ref} from "vue/macros";
   const props = defineProps({
     type: String,
-    labelText: String,
+    label: String,
     placeholder: String,
-    prefix: String,
-    Change: Function,
+    name: String,
+    value: String,
   });
 
-  let value = $ref("");
+defineEmits(['updateData'])
+let inputValue = $ref(props.value);
 
-  const OnChange = (e) => {
-    value = e.target.value;
-    const data = {
-      prefix: props.prefix,
-      value,
-    }
-    props.Change && props.Change(data);
-  }
+const setValue = (e) => {
+  inputValue = e.target.value;
+}
 
 </script>
 
 <template>
   <div>
-    <label>{{labelText}}</label>
+    <label>{{label}}</label>
+<!--    Jak dam tu v-model=inputValue to nie działa czyszczenie komponentu-->
     <input
       :type="type"
       :placeholder="placeholder"
       :value="value"
-      @change="OnChange"
+      @input="setValue"
+      @change="$emit('updateData', {name, value: inputValue})"
     >
   </div>
 </template>

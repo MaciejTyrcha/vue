@@ -5,7 +5,8 @@ export const useUserStore = defineStore('user', () => {
   const users = ref([]);
 
   function addUser(user) {
-    users.value.push(user);
+    console.log("STORE: ", user);
+    users.value.push({...user});
   }
 
   return { users, addUser}
