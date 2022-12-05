@@ -1,11 +1,10 @@
-// import { useUserStore } from "@/stores/user.js";
-// const userStore = useUserStore();
+import { useUserStore } from "@/stores/user.js";
+
 
 export const formDef1 = {
   Submit(data) {
-    console.log(data);
-    console.log('Submit 1!');
-    // userStore.addUser(data);
+    const userStore = useUserStore();
+    userStore.addUser(data);
   },
   content: [
     {
@@ -13,6 +12,7 @@ export const formDef1 = {
       label: 'Name',
       placeholder: "Name",
       name: 'name',
+      value: "",
       default: "",
     },
     {
@@ -20,6 +20,7 @@ export const formDef1 = {
       label: 'Surname',
       placeholder: "Surname",
       name: 'surname',
+      value: "",
       default: "",
     },
   ]

@@ -19,7 +19,6 @@ const setValue = (e) => {
 <template>
   <div>
     <label>{{label}}</label>
-<!--    Jak dam tu v-model=inputValue to nie działa czyszczenie komponentu-->
     <input
       :type="type"
       :placeholder="placeholder"
